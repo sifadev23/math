@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>د. محمد الرياضي - أستاذ الرياضيات</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-foreground: #ffffff;
+            --muted: #f3f4f6;
+            --muted-foreground: #6b7280;
+            --card: #ffffff;
+            --card-foreground: #1f2937;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--card-foreground);
+            background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .avatar {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+        }
+        .card {
+            background-color: var(--card);
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .publication {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .publication-icon {
+            margin-left: 0.5rem;
+            color: var(--muted-foreground);
+        }
+        .publication-content {
+            flex: 1;
+        }
+        .publication-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .publication-details {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .contact-icon {
+            margin-left: 0.5rem;
+            color: var(--muted-foreground);
+        }
+        .button {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #2563eb;
+        }
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/placeholder.svg?height=128&width=128" alt="صورة البروفايل" class="avatar">
+            <h1>د. محمد الرياضي</h1>
+            <p class="subtitle">أستاذ الرياضيات</p>
+        </header>
+
+        <div class="card">
+            <h2 class="card-title">نبذة عني</h2>
+            <p>
+                مرحبًا! أنا د. محمد الرياضي، أستاذ الرياضيات في جامعة العلوم المتقدمة. أقوم بتدريس وبحث في مجالات التحليل الرياضي ونظرية الأعداد منذ 15 عامًا. شغفي هو اكتشاف الروابط بين النظريات الرياضية المختلفة وتطبيقاتها في العالم الحقيقي.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">مجالات البحث</h2>
+            <div>
+                <span class="badge">التحليل الرياضي</span>
+                <span class="badge">نظرية الأعداد</span>
+                <span class="badge">الجبر المجرد</span>
+                <span class="badge">الهندسة التفاضلية</span>
+                <span class="badge">تطبيقات الرياضيات في العلوم الطبيعية</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">المنشورات الحديثة</h2>
+            <div class="publication">
+                <span class="publication-icon">📅</span>
+                <div class="publication-content">
+                    <p class="publication-title">"تطبيقات جديدة لنظرية الأعداد في الذكاء الاصطناعي"</p>
+                    <p class="publication-details">مجلة الرياضيات العالمية، 2023</p>
+                </div>
+            </div>
+            <div class="publication">
+                <span class="publication-icon">📅</span>
+                <div class="publication-content">
+                    <p class="publication-title">"استكشاف الروابط بين التحليل الرياضي والهندسة التفاضلية"</p>
+                    <p class="publication-details">مؤتمر الرياضيات الدولي، 2022</p>
+                </div>
+            </div>
+            <div class="publication">
+                <span class="publication-icon">📅</span>
+                <div class="publication-content">
+                    <p class="publication-title">"نحو فهم أعمق للجبر المجرد: دراسة تحليلية"</p>
+                    <p class="publication-details">مجلة التحليل الرياضي، 2021</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">تواصل معي</h2>
+            <p>للتواصل 
