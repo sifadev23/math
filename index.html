@@ -73,23 +73,23 @@
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        .publication {
+        .publication, .document-link {
             display: flex;
             align-items: flex-start;
             margin-bottom: 1rem;
         }
-        .publication-icon {
+        .publication-icon, .document-icon {
             margin-left: 0.5rem;
             color: var(--muted-foreground);
         }
-        .publication-content {
+        .publication-content, .document-content {
             flex: 1;
         }
-        .publication-title {
+        .publication-title, .document-title {
             font-weight: 600;
             margin-bottom: 0.25rem;
         }
-        .publication-details {
+        .publication-details, .document-details {
             font-size: 0.875rem;
             color: var(--muted-foreground);
         }
@@ -117,6 +117,13 @@
         footer {
             text-align: center;
             margin-top: 3rem;
+        }
+        .pdf-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .pdf-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -147,6 +154,78 @@
         </div>
 
         <div class="card">
+            <h2 class="card-title">المذكرات</h2>
+            <div class="document-link">
+                <span class="document-icon">📄</span>
+                <div class="document-content">
+                    <a href="/path/to/note1.pdf" class="pdf-link" target="_blank">مذكرة التحليل الرياضي</a>
+                    <p class="document-details">آخر تحديث: 15 مارس 2024</p>
+                </div>
+            </div>
+            <div class="document-link">
+                <span class="document-icon">📄</span>
+                <div class="document-content">
+                    <a href="/path/to/note2.pdf" class="pdf-link" target="_blank">مذكرة نظرية الأعداد</a>
+                    <p class="document-details">آخر تحديث: 20 فبراير 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">الدروس</h2>
+            <div class="document-link">
+                <span class="document-icon">📚</span>
+                <div class="document-content">
+                    <a href="/path/to/lesson1.pdf" class="pdf-link" target="_blank">درس مقدمة في التحليل الرياضي</a>
+                    <p class="document-details">تاريخ النشر: 5 أبريل 2024</p>
+                </div>
+            </div>
+            <div class="document-link">
+                <span class="document-icon">📚</span>
+                <div class="document-content">
+                    <a href="/path/to/lesson2.pdf" class="pdf-link" target="_blank">درس أساسيات نظرية الأعداد</a>
+                    <p class="document-details">تاريخ النشر: 12 أبريل 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">الفروض</h2>
+            <div class="document-link">
+                <span class="document-icon">📝</span>
+                <div class="document-content">
+                    <a href="/path/to/assignment1.pdf" class="pdf-link" target="_blank">فرض التحليل الرياضي - الفصل الأول</a>
+                    <p class="document-details">تاريخ التسليم: 30 أبريل 2024</p>
+                </div>
+            </div>
+            <div class="document-link">
+                <span class="document-icon">📝</span>
+                <div class="document-content">
+                    <a href="/path/to/assignment2.pdf" class="pdf-link" target="_blank">فرض نظرية الأعداد - الفصل الأول</a>
+                    <p class="document-details">تاريخ التسليم: 7 مايو 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">الاختبارات</h2>
+            <div class="document-link">
+                <span class="document-icon">📊</span>
+                <div class="document-content">
+                    <a href="/path/to/exam1.pdf" class="pdf-link" target="_blank">اختبار منتصف الفصل - التحليل الرياضي</a>
+                    <p class="document-details">تاريخ الاختبار: 15 مايو 2024</p>
+                </div>
+            </div>
+            <div class="document-link">
+                <span class="document-icon">📊</span>
+                <div class="document-content">
+                    <a href="/path/to/exam2.pdf" class="pdf-link" target="_blank">اختبار نهاية الفصل - نظرية الأعداد</a>
+                    <p class="document-details">تاريخ الاختبار: 20 يونيو 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
             <h2 class="card-title">المنشورات الحديثة</h2>
             <div class="publication">
                 <span class="publication-icon">📅</span>
@@ -162,15 +241,28 @@
                     <p class="publication-details">مؤتمر الرياضيات الدولي، 2022</p>
                 </div>
             </div>
-            <div class="publication">
-                <span class="publication-icon">📅</span>
-                <div class="publication-content">
-                    <p class="publication-title">"نحو فهم أعمق للجبر المجرد: دراسة تحليلية"</p>
-                    <p class="publication-details">مجلة التحليل الرياضي، 2021</p>
-                </div>
-            </div>
         </div>
 
         <div class="card">
             <h2 class="card-title">تواصل معي</h2>
-            <p>للتواصل 
+            <p>للتواصل معي بخصوص البحوث أو فرص التعاون، يرجى استخدام المعلومات أدناه:</p>
+            <div class="contact-info">
+                <span class="contact-icon">✉️</span>
+                <p>mohamed.math@university.edu</p>
+            </div>
+            <div class="contact-info">
+                <span class="contact-icon">📍</span>
+                <p>مبنى كلية العلوم، الطابق الثالث، مكتب رقم 305</p>
+            </div>
+            <div class="contact-info">
+                <span class="contact-icon">🕒</span>
+                <p>ساعات العمل: الاثنين - الخميس، 10:00 صباحًا - 2:00 مساءً</p>
+            </div>
+        </div>
+
+        <footer>
+            <a href="#" class="button">تحميل السيرة الذاتية</a>
+        </footer>
+    </div>
+</body>
+</html>
