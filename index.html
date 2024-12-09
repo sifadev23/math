@@ -1,77 +1,97 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع إدارة الملاحظات</title>
+    <title>الصفحة الرئيسية</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #007bff;
-            color: white;
             text-align: center;
-            padding: 1rem;
+            margin-top: 50px;
         }
-        .container {
-            margin: 20px auto;
-            max-width: 600px;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
+        .button-container {
+            margin: 20px;
         }
         button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 18px;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #0056b3;
-        }
-        select, input {
-            width: 100%;
+        input[type="file"] {
             padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>إدارة الملاحظات</h1>
-    </header>
-    <div class="container">
-        <div class="form-group">
-            <button id="importExcel">استيراد ملف إكسل</button>
-        </div>
-        <div class="form-group">
-            <label for="levelSelect">اختر الطور</label>
-            <select id="levelSelect">
-                <option value="middle">الطور المتوسط</option>
-                <option value="secondary">الطور الثانوي</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <button id="navigateMiddle">الانتقال إلى الطور المتوسط</button>
-            <button id="navigateSecondary">الانتقال إلى الطور الثانوي</button>
-        </div>
+
+    <h1>مرحبا بك في فضاء الأستاذ</h1>
+    <div class="button-container">
+        <button id="middleButton">الطور المتوسط</button>
+        <button id="secondaryButton">الطور الثانوي</button>
     </div>
+
+    <h2>استيراد ملف Excel</h2>
+    <input type="file" id="excelFile" accept=".xlsx, .xls" />
+    <button onclick="importExcel()">استيراد</button>
+
+    <div id="excelData"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    
+    <script>
+        const middleButton = document.getElementById('middleButton');
+        const secondaryButton = document.getElementById('secondaryButton');
+
+        middleButton.addEventListener('click', function() {
+            window.location.href = "middle.html";
+        });
+
+        secondaryButton.addEventListener('click', function() {
+            window.location.href = "secondary.html";
+        });
+
+        // وظيفة استيراد ملف Excel
+        function importExcel() {
+            const fileInput = document.getElementById('excelFile');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('يرجى اختيار ملف Excel');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+
+                // تحويل البيانات من ورقة العمل الأولى
+                const sheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[sheetName];
+                const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+                // عرض البيانات المستوردة
+                let html = '<table border="1"><tr>';
+                jsonData[0].forEach(header => {
+                    html += `<th>${header}</th>`;
+                });
+                html += '</tr>';
+
+                for (let i = 1; i < jsonData.length; i++) {
+                    html += '<tr>';
+                    jsonData[i].forEach(cell => {
+                        html += `<td>${cell}</td>`;
+                    });
+                    html += '</tr>';
+                }
+
+                html += '</table>';
+                document.getElementById('excelData').innerHTML = html;
+            };
+            reader.readAsArrayBuffer(file);
+        }
+    </script>
+
 </body>
 </html>
