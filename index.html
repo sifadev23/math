@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فضاء الأستاذ</title>
+    <title>ادخال الملاحظات By Sofiane </title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,12 +38,17 @@
     <input type="file" id="excelFile" accept=".xlsx, .xls" />
     <button onclick="importExcel()">استيراد</button>
 
+    <h2>تصدير الملف المعدل</h2>
+    <button onclick="exportExcel()">تصدير</button>
+
     <div id="results"></div>
 
     <!-- تضمين مكتبة SheetJS عبر CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
     
     <script>
+        let modifiedData = [];  // تخزين البيانات المعدلة
+
         const middleButton = document.getElementById('middleButton');
         const secondaryButton = document.getElementById('secondaryButton');
 
@@ -80,7 +85,9 @@
                 jsonData[0].forEach(header => {
                     html += `<th>${header}</th>`;
                 });
-                html += '</tr>';
+                html += '<th>المعدل</th><th>الملاحظة</th></tr>';
+
+                modifiedData = []; // إعادة تعيين البيانات المعدلة
 
                 for (let i = 1; i < jsonData.length; i++) {
                     const row = jsonData[i];
@@ -93,6 +100,9 @@
                     });
                     html += `<td>${average}</td><td>${comment}</td>`;
                     html += '</tr>';
+
+                    // إضافة البيانات المعدلة إلى المصوفة
+                    modifiedData.push([...row, average, comment]);
                 }
 
                 html += '</table>';
@@ -114,6 +124,25 @@
             if (average >= 12) return 'جيد';
             if (average >= 10) return 'مقبول';
             return 'ضعيف';
+        }
+
+        // وظيفة لتصدير البيانات المعدلة إلى ملف Excel
+        function exportExcel() {
+            if (modifiedData.length === 0) {
+                alert('يرجى استيراد ملف أولاً.');
+                return;
+            }
+
+            // إضافة العناوين إلى البيانات المعدلة
+            const headers = ["اسم الطالب", "الدرجة 1", "الدرجة 2", "الدرجة 3", "الدرجة 4", "الدرجة 5", "المعدل", "الملاحظة"];
+            modifiedData.unshift(headers);
+
+            const ws = XLSX.utils.aoa_to_sheet(modifiedData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "النتائج");
+
+            // تصدير الملف
+            XLSX.writeFile(wb, "نتائج_الطلاب.xlsx");
         }
     </script>
 
