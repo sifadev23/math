@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصفحة الرئيسية</title>
+    <title>فضاء الأستاذ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,6 +21,9 @@
         input[type="file"] {
             padding: 10px;
         }
+        #results {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -35,7 +38,7 @@
     <input type="file" id="excelFile" accept=".xlsx, .xls" />
     <button onclick="importExcel()">استيراد</button>
 
-    <div id="excelData"></div>
+    <div id="results"></div>
 
     <!-- تضمين مكتبة SheetJS عبر CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
@@ -72,7 +75,7 @@
                 const worksheet = workbook.Sheets[sheetName];
                 const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-                // عرض البيانات المستوردة
+                // حساب المعدلات وإعطاء الملاحظات
                 let html = '<table border="1"><tr>';
                 jsonData[0].forEach(header => {
                     html += `<th>${header}</th>`;
@@ -80,17 +83,37 @@
                 html += '</tr>';
 
                 for (let i = 1; i < jsonData.length; i++) {
+                    const row = jsonData[i];
+                    const grades = row.slice(1); // نفترض أن أول عمود هو الاسم أو الرقم، والبقية هي الدرجات
+                    const average = calculateAverage(grades);
+                    const comment = getComment(average);
                     html += '<tr>';
-                    jsonData[i].forEach(cell => {
+                    row.forEach(cell => {
                         html += `<td>${cell}</td>`;
                     });
+                    html += `<td>${average}</td><td>${comment}</td>`;
                     html += '</tr>';
                 }
 
                 html += '</table>';
-                document.getElementById('excelData').innerHTML = html;
+                document.getElementById('results').innerHTML = html;
             };
             reader.readAsArrayBuffer(file);
+        }
+
+        // حساب المعدل
+        function calculateAverage(grades) {
+            const sum = grades.reduce((total, grade) => total + parseFloat(grade), 0);
+            return sum / grades.length;
+        }
+
+        // إعطاء الملاحظة بناءً على المعدل
+        function getComment(average) {
+            if (average >= 16) return 'ممتاز';
+            if (average >= 14) return 'جيد جدا';
+            if (average >= 12) return 'جيد';
+            if (average >= 10) return 'مقبول';
+            return 'ضعيف';
         }
     </script>
 
