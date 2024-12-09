@@ -3,266 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>د. محمد الرياضي - أستاذ الرياضيات</title>
+    <title>موقع إدارة الملاحظات</title>
     <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-foreground: #ffffff;
-            --muted: #f3f4f6;
-            --muted-foreground: #6b7280;
-            --card: #ffffff;
-            --card-foreground: #1f2937;
-        }
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.5;
-            color: var(--card-foreground);
-            background: linear-gradient(to bottom, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05));
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
         header {
+            background-color: #007bff;
+            color: white;
             text-align: center;
-            margin-bottom: 3rem;
+            padding: 1rem;
         }
-        .avatar {
-            width: 128px;
-            height: 128px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
             display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--muted-foreground);
+        button:hover {
+            background-color: #0056b3;
         }
-        .card {
-            background-color: var(--card);
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            transition: box-shadow 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        .badge {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .publication, .document-link {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        .publication-icon, .document-icon {
-            margin-left: 0.5rem;
-            color: var(--muted-foreground);
-        }
-        .publication-content, .document-content {
-            flex: 1;
-        }
-        .publication-title, .document-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        .publication-details, .document-details {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-        }
-        .contact-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .contact-icon {
-            margin-left: 0.5rem;
-            color: var(--muted-foreground);
-        }
-        .button {
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #2563eb;
-        }
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .pdf-link {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        .pdf-link:hover {
-            text-decoration: underline;
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>إدارة الملاحظات</h1>
+    </header>
     <div class="container">
-        <header>
-            <img src="/placeholder.svg?height=128&width=128" alt="صورة البروفايل" class="avatar">
-            <h1>د. محمد الرياضي</h1>
-            <p class="subtitle">أستاذ الرياضيات</p>
-        </header>
-
-        <div class="card">
-            <h2 class="card-title">نبذة عني</h2>
-            <p>
-                مرحبًا! أنا د. محمد الرياضي، أستاذ الرياضيات في جامعة العلوم المتقدمة. أقوم بتدريس وبحث في مجالات التحليل الرياضي ونظرية الأعداد منذ 15 عامًا. شغفي هو اكتشاف الروابط بين النظريات الرياضية المختلفة وتطبيقاتها في العالم الحقيقي.
-            </p>
+        <div class="form-group">
+            <button id="importExcel">استيراد ملف إكسل</button>
         </div>
-
-        <div class="card">
-            <h2 class="card-title">مجالات البحث</h2>
-            <div>
-                <span class="badge">التحليل الرياضي</span>
-                <span class="badge">نظرية الأعداد</span>
-                <span class="badge">الجبر المجرد</span>
-                <span class="badge">الهندسة التفاضلية</span>
-                <span class="badge">تطبيقات الرياضيات في العلوم الطبيعية</span>
-            </div>
+        <div class="form-group">
+            <label for="levelSelect">اختر الطور</label>
+            <select id="levelSelect">
+                <option value="middle">الطور المتوسط</option>
+                <option value="secondary">الطور الثانوي</option>
+            </select>
         </div>
-
-        <div class="card">
-            <h2 class="card-title">المذكرات</h2>
-            <div class="document-link">
-                <span class="document-icon">📄</span>
-                <div class="document-content">
-                    <a href="/path/to/note1.pdf" class="pdf-link" target="_blank">مذكرة التحليل الرياضي</a>
-                    <p class="document-details">آخر تحديث: 15 مارس 2024</p>
-                </div>
-            </div>
-            <div class="document-link">
-                <span class="document-icon">📄</span>
-                <div class="document-content">
-                    <a href="/path/to/note2.pdf" class="pdf-link" target="_blank">مذكرة نظرية الأعداد</a>
-                    <p class="document-details">آخر تحديث: 20 فبراير 2024</p>
-                </div>
-            </div>
+        <div class="form-group">
+            <button id="navigateMiddle">الانتقال إلى الطور المتوسط</button>
+            <button id="navigateSecondary">الانتقال إلى الطور الثانوي</button>
         </div>
-
-        <div class="card">
-            <h2 class="card-title">الدروس</h2>
-            <div class="document-link">
-                <span class="document-icon">📚</span>
-                <div class="document-content">
-                    <a href="/path/to/lesson1.pdf" class="pdf-link" target="_blank">درس مقدمة في التحليل الرياضي</a>
-                    <p class="document-details">تاريخ النشر: 5 أبريل 2024</p>
-                </div>
-            </div>
-            <div class="document-link">
-                <span class="document-icon">📚</span>
-                <div class="document-content">
-                    <a href="/path/to/lesson2.pdf" class="pdf-link" target="_blank">درس أساسيات نظرية الأعداد</a>
-                    <p class="document-details">تاريخ النشر: 12 أبريل 2024</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">الفروض</h2>
-            <div class="document-link">
-                <span class="document-icon">📝</span>
-                <div class="document-content">
-                    <a href="/path/to/assignment1.pdf" class="pdf-link" target="_blank">فرض التحليل الرياضي - الفصل الأول</a>
-                    <p class="document-details">تاريخ التسليم: 30 أبريل 2024</p>
-                </div>
-            </div>
-            <div class="document-link">
-                <span class="document-icon">📝</span>
-                <div class="document-content">
-                    <a href="/path/to/assignment2.pdf" class="pdf-link" target="_blank">فرض نظرية الأعداد - الفصل الأول</a>
-                    <p class="document-details">تاريخ التسليم: 7 مايو 2024</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">الاختبارات</h2>
-            <div class="document-link">
-                <span class="document-icon">📊</span>
-                <div class="document-content">
-                    <a href="/path/to/exam1.pdf" class="pdf-link" target="_blank">اختبار منتصف الفصل - التحليل الرياضي</a>
-                    <p class="document-details">تاريخ الاختبار: 15 مايو 2024</p>
-                </div>
-            </div>
-            <div class="document-link">
-                <span class="document-icon">📊</span>
-                <div class="document-content">
-                    <a href="/path/to/exam2.pdf" class="pdf-link" target="_blank">اختبار نهاية الفصل - نظرية الأعداد</a>
-                    <p class="document-details">تاريخ الاختبار: 20 يونيو 2024</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">المنشورات الحديثة</h2>
-            <div class="publication">
-                <span class="publication-icon">📅</span>
-                <div class="publication-content">
-                    <p class="publication-title">"تطبيقات جديدة لنظرية الأعداد في الذكاء الاصطناعي"</p>
-                    <p class="publication-details">مجلة الرياضيات العالمية، 2023</p>
-                </div>
-            </div>
-            <div class="publication">
-                <span class="publication-icon">📅</span>
-                <div class="publication-content">
-                    <p class="publication-title">"استكشاف الروابط بين التحليل الرياضي والهندسة التفاضلية"</p>
-                    <p class="publication-details">مؤتمر الرياضيات الدولي، 2022</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2 class="card-title">تواصل معي</h2>
-            <p>للتواصل معي بخصوص البحوث أو فرص التعاون، يرجى استخدام المعلومات أدناه:</p>
-            <div class="contact-info">
-                <span class="contact-icon">✉️</span>
-                <p>mohamed.math@university.edu</p>
-            </div>
-            <div class="contact-info">
-                <span class="contact-icon">📍</span>
-                <p>مبنى كلية العلوم، الطابق الثالث، مكتب رقم 305</p>
-            </div>
-            <div class="contact-info">
-                <span class="contact-icon">🕒</span>
-                <p>ساعات العمل: الاثنين - الخميس، 10:00 صباحًا - 2:00 مساءً</p>
-            </div>
-        </div>
-
-        <footer>
-            <a href="#" class="button">تحميل السيرة الذاتية</a>
-        </footer>
     </div>
 </body>
 </html>
